@@ -24,14 +24,14 @@ public class Student {
 
 	}
 
-	public void printStudentCount() {
+	public void totalStudentNum() {
 		System.out.println("총 학생 수는 " + studentCount + "명입니다.");
 	}
 
 	public void printClassStudentInfo(String greenClass) {
 		for (int i = 0; i < students.length; i++) {
 			if (students[i].greenClass.equals(greenClass)) {
-				System.out.println(students[i].greenClass + "반\t" + students[i].smo + "번" + "\t이름:" + students[i].name);
+				System.out.println(students[i].greenClass + "반\t" + "g-" +students[i].smo + "번" + "\t이름:" + students[i].name);
 			}
 		}
 	}

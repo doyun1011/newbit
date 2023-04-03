@@ -20,7 +20,7 @@ public class StudentTest {
 		line();
 		student.printClassStudentInfo("C");
 		line();
-		student.printStudentCount();
+		student.totalStudentNum();
 	}
 	static void line() {
 		System.out.println("==================================");
