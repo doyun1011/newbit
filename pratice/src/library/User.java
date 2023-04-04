@@ -10,6 +10,19 @@ public class User {
 	private String[] borrowedBooks = new String[3];
 	private User[] userList = new User[1];
 	private int borrowedCount = 0;
+	
+	public User() {
+		
+	}
+	public User(String id, String password, String name) {
+		this.id = id;
+		this.password = password;
+		this.name = name;
+	}
+	public void adminCreate(String id, String password) {
+		User user = new User("admin", "1234", "°ü¸®ÀÚ");
+		resistUser(user);
+	}
 	public String getName() {
 		return name;
 	}
@@ -45,7 +58,7 @@ public class User {
 	}
 	
 	public void addBorrowedBook(String bookName) {
-		int index = borrowedCount++;
+		int index = borrowedCount;
 		borrowedBooks[index] = bookName;
 		borrowedCount++;
 	}
