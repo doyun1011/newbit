@@ -20,7 +20,7 @@ public class AdminInterface {
 			String id = userList[i].getId();
 
 			System.out.println("id: " + id + " password: " + password + " ssn: " + ssn);
-		}
+		}  
 	}
 
 	public void modifyUserList() {
