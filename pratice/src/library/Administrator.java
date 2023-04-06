@@ -259,7 +259,7 @@ public class Administrator {
 		int index = bookList.length - 1;
 		bookList[index] = book;
 		bookListExpand();
-	}
+	}       
 
 	public Book[] getBookList() {
 		return bookList;
