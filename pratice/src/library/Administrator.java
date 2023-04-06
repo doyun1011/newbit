@@ -253,7 +253,7 @@ public class Administrator {
 		}
 		bookList = tmpArray;
 	}
-
+  
 	public void resistBook(Book book) {
 
 		int index = bookList.length - 1;
