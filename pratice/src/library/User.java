@@ -4,25 +4,22 @@ public class User {
 
 	private String name;
 	private int ssn;
+	static int userCount =0;
 	private int PhoneNumber;
 	private String id;
 	private String password;
 	private String[] borrowedBooks = new String[3];
-	private User[] userList = new User[1];
 	private int borrowedCount = 0;
 	
 	public User() {
-		
 	}
 	public User(String id, String password, String name) {
 		this.id = id;
 		this.password = password;
 		this.name = name;
+		userCount++;
 	}
-	public void adminCreate(String id, String password) {
-		User user = new User("admin", "1234", "°ü¸®ÀÚ");
-		resistUser(user);
-	}
+	
 	public String getName() {
 		return name;
 	}
@@ -62,26 +59,8 @@ public class User {
 		borrowedBooks[index] = bookName;
 		borrowedCount++;
 	}
-	public void resistUser(User user) {
-		
-		int index= userList.length -1;
-		userList[index] = user;
-		UserListExpand();
-	}
 	
-	public void UserListExpand() {
-		User[] tmpArray = new User[userList.length+1];
-		for (int i = 0; i < userList.length; i++) {
-			tmpArray[i] = userList[i];
-		}
-		userList=tmpArray;
-	}
-	public User[] getUserList() {
-		return userList;
-	}
-	public void setUserList(User[] userList) {
-		this.userList = userList;
-	}
+	
 	
 	
 }

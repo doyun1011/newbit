@@ -8,7 +8,16 @@ public class Book {
 	private String catagoryCode;
 	private boolean borrowStatus = false;
 
-	Book[] bookList = new Book[1];
+	
+	public Book() {
+		// TODO Auto-generated constructor stub
+	}
+	public Book(String title, String publisher, String writter, String catagoryCode) {
+		this.title= title; 
+		this.publisher = publisher;
+		this.writter = writter;
+		this.catagoryCode =catagoryCode;
+	}
 
 	public String getTitle() {
 		return title;
@@ -52,24 +61,5 @@ public class Book {
 	public void setBorrowStatus(boolean borrowStatus) {
 		this.borrowStatus = borrowStatus;
 	}
-	public void bookListExpand() {
-		Book[] tmpArray = new Book[bookList.length + 1];
-		for (int i = 0; i < bookList.length; i++) {
-			tmpArray[i] = bookList[i];
-		}
-		bookList = tmpArray;
-	}
 
-	public void resistBook(Book book) {
-
-		int index = bookList.length - 1;
-		bookList[index] = book;
-		bookListExpand();
-	}
-	public Book[] getBookList() {
-		return bookList;
-	}
-	public void setBookList(Book[] bookList) {
-		this.bookList = bookList;
-	}
 }
