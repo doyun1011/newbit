@@ -10,9 +10,9 @@ public class AdminSystem {
 	Student[] studentList = new Student[100];
 	Teacher[] teacherList = new Teacher[100];
 	Employee[] employeeList = new Employee[100];
-	int studentCnt = 0;
-	int teacherCnt = 0;
-	int employeeCnt = 0;
+	static int studentCnt = 0;
+	static int teacherCnt = 0;
+	static int employeeCnt = 0;
 
 	public static void main(String[] args) {
 		AdminSystem admin = new AdminSystem();
@@ -362,7 +362,7 @@ public class AdminSystem {
 		}
 		public void correctSwitchTeacher(int index, String name1) {
 			System.out.println("수정할 정보를 선택하세요.");
-			System.out.println("1.이름  2.나이  3.과목  4.성적");
+			System.out.println("1.이름  2.나이  3.과목  4.급여");
 			int selector = scan.nextInt();
 			System.out.println("수정할 정보를 입력하세요.");
 			switch (selector) {

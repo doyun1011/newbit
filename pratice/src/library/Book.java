@@ -61,5 +61,10 @@ public class Book {
 	public void setBorrowStatus(boolean borrowStatus) {
 		this.borrowStatus = borrowStatus;
 	}
+	@Override
+	public String toString() {
+		return "[제목:" + title + " 출판사:" + publisher + " 작가:" + writter + " 카테고리:"
+				+ catagoryCode + " 빌림유무=" + borrowStatus + "]";
+	}
 
 }

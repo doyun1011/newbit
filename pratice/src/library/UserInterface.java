@@ -74,7 +74,7 @@ public class UserInterface {
 				remainBorrowCount--;
 				
 				System.out.println("대출이 완료되었습니다. " + "남은 대출가능 횟수:" + remainBorrowCount);
-				userList[key].addBorrowedBook(title);
+				userList[key].setBorrowedBooks(title);
 				bookList[i].setBorrowStatus(true);
 				return;
 			} else if (title.equals(bookList[i].getTitle()) && bookList[i].getborrowStatus() == true) {
@@ -134,7 +134,7 @@ public class UserInterface {
 		user.setName(name);
 		user.userCount++;
 		int index = user.userCount - 1;
-		userList = administrator.UserListExpand();
+		administrator.UserListExpand();
 		userList[index] = user;
 		System.out.println(userList[index].getName());
 
@@ -207,4 +207,5 @@ public class UserInterface {
 	public static User[] getUserList() {
 		return userList;
 	}
+	
 }
