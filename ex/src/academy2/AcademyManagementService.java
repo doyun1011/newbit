@@ -16,7 +16,7 @@ public class AcademyManagementService {
 	
 	//학생/교사/직원등록
 	public void regist(Person p) {
-		dao.regist(p);
+		dao.regist(p);	
 	}
 	
 	//학생조회(전체)

@@ -8,39 +8,46 @@ public class UserInterface {
 	int key;
 	int remainBorrowCount = 3;
 	Scanner scan = new Scanner(System.in);
-	static User[] userList = { new User("admin", "1234", "관리자") };
 	Book[] bookList = { new Book("자바의정석", "모아", "남궁성", "A") };
+	Date date = new Date();
+	ReadingRoom readRoom = new ReadingRoom();
+	ReadingRoom[] readRoomList = new ReadingRoom[35];
+	static User[] userList = { new User("admin", "1234", "관리자") };
 	static Administrator administrator = new Administrator();
 
 	public static void main(String[] args) {
 		while (true) {
 			UserInterface li = new UserInterface();
 			Scanner scan = new Scanner(System.in);
-			System.out.println("사용하고자 하는 서비스를 선택해 주십시오. 1.대출  2.반납  3.책 검색   4.그만두기");
+			System.out.println("사용하고자 하는 서비스를 선택해 주십시오. 1.대출  2.반납  3.책 검색  4.열람실 이용 5.그만두기");
 			int selectorService = scan.nextInt();
-			if (selectorService == 1) {
-				
-				System.out.println("로그인이 필요한 서비스입니다. 로그인하시겠습니까? ");
-				System.out.println("1.로그인  2.회원가입  3.아이디/비밀번호 찾기 4.그만두기 ");
-				int selector = scan.nextInt();
-				switch (selector) {
-				case 1:
-						li.login();
-						li.borrowBook();
-					break;
-				case 2:
-					li.joinMembership();
-					break;
-				case 3:
-					li.findIdPassword();
-					break;
-				case 4:
-					return;
+			switch (selectorService) {
+			case 1:
+				li.logInService();
+				li.borrowBook();
+				break;
+			case 2:
+				li.logInService();
+				li.returnBook();
+				break;
+			case 3:
+				Administrator administrator = new Administrator();
+				administrator.printBookList();
+				break;
+			case 4:
+				li.logInService();
+				li.borrowBook();
+				break;
+			case 5:
+				li.readingRoomService();
+				return;
 
-				default:
-					System.out.println("잘못입력하셨습니다.");
-					break;
-				}
+			default:
+				break;
+			}
+			if (selectorService == 1) {
+				li.logInService();
+				li.borrowBook();
 			} else if (selectorService == 2) {
 				li.returnBook();
 			} else if (selectorService == 3) {
@@ -48,6 +55,152 @@ public class UserInterface {
 				administrator.printBookList();
 			} else if (selectorService == 4) {
 				return;
+			}
+		}
+	}
+
+	private void readingRoomService() {
+		String userId = userList[key].getId();
+		String reservId = readRoom.getUserId();
+		if (userId.equals(reservId)) {
+			System.out.println("1.입실  2.예약취소  3.예약정보확인");
+			int selector = scan.nextInt();
+			switch (selector) {
+			case 1:
+				entrance();
+				break;
+			case 2:
+				reservCancel();
+				break;
+			case 3:
+				printReservInfo();
+				break;
+
+			default:
+				break;
+			}
+		} else {
+			while (true) {
+				ReadingRoom readRoom = new ReadingRoom();
+				System.out.println("예약하시겠습니까? 1.예약  2.종료       도서관 종료시간은 22:00까지 입니다. ");
+				int StartEndKey = scan.nextInt();
+				if (StartEndKey == 2) {
+					return;
+				}
+				System.out.println("현재시간  " + date.getHour() + "시  " + date.getMinute() + "분");
+				System.out.println("예약할 시간을 입력하세요.");
+				int startHour = scan.nextInt();
+				System.out.println("예약할 분(minute)을 입력하세요.");
+				int startMinute = scan.nextInt();
+				if (startHour <= date.getHour() && startMinute < date.getMinute()) {
+					System.out.println("현재시간 이전 시간은 선택하실 수 없습니다.");
+					continue;
+				}
+				if (!(hourTest(startHour) && minuteTest(startMinute))) {
+					continue;
+				}
+				System.out.println("예약종료 할 시간을 입력하세요.");
+				int endHour = scan.nextInt();
+				System.out.println("예약종료 할 분(minute)을 입력하세요.");
+				int endMinute = scan.nextInt();
+				if (endHour <= startHour && endMinute < startMinute) {
+					System.out.println("시작 시간보다 이전 시간을 선택하실 수 없습니다.");
+					continue;
+				}
+				if (!(hourTest(endHour) && minuteTest(endMinute))) {
+					continue;
+				}
+				System.out.println("예약할 좌석을 선택하세요. 0 ~ 35번");
+				printReservSeat();
+				int seatNum = scan.nextInt();
+				if (seatNum < 0 || seatNum > 35) {
+					System.out.println("잘못입력하셨습니다.");
+				
+				}
+
+				readRoom.setStartHour(startHour);
+				readRoom.setStartMinute(startMinute);
+				readRoom.setEndHour(endHour);
+				readRoom.setEndMinute(endMinute);
+				readRoomList[seatNum] = readRoom;
+				System.out.println("예약이 완료되었습니다.");
+				return;
+			}
+		}
+
+	}
+
+	private void printReservInfo() {
+		for (int i = 0; i < readRoomList.length; i++) {
+			String userId = userList[key].getId();
+			String reservId = readRoomList[i].getUserId();
+			if(userId.equals(reservId)) {
+				System.out.println(readRoomList[i]);
+			}
+
+		}
+	}
+
+	private void reservCancel() {
+		readRoom.setReservStatus(false);
+	}
+
+	private void entrance() {
+		System.out.println("입실 완료되었습니다.");
+		readRoom.setEntranceStatus(true);
+	}
+
+	private void printReservSeat() {
+		for (int i = 0; i < readRoomList.length; i++) {
+			String reservId = readRoomList[i].getUserId();
+			if (reservId == null) {
+				continue;
+			} else {
+				System.out.println(readRoomList[i]);
+			}
+		}
+		System.out.println();
+
+	}
+
+	private boolean minuteTest(int minute) {
+		if (minute < 0 || minute > 60) {
+			System.out.println("잘못 입력하셨습니다.");
+			return false;
+		}
+		return true;
+	}
+
+	private boolean hourTest(int hour) {
+		if (hour > 22 || hour < 9) {
+			System.out.println("도서관 운영시간을 벗어났습니다.");
+			return false;
+		}
+		return true;
+
+	}
+
+	private void logInService() {
+		System.out.println("로그인이 필요한 서비스입니다. 로그인하시겠습니까? ");
+		while (true) {
+			System.out.println("1.로그인  2.회원가입  3.아이디/비밀번호 찾기 4.그만두기 ");
+			int selector = scan.nextInt();
+			switch (selector) {
+			case 1:
+				login();
+				return;
+			case 2:
+				joinMembership();
+				break;
+			case 3:
+				findIdPassword();
+				break;
+			case 4:
+				return;
+
+			default:
+				System.out.println("잘못입력하셨습니다.");
+				break;
 			}
 		}
 	}
@@ -72,7 +225,7 @@ public class UserInterface {
 		for (int i = 0; i < bookList.length; i++) {
 			if (title.equals(bookList[i].getTitle()) && bookList[i].getborrowStatus() == false) {
 				remainBorrowCount--;
-				
+
 				System.out.println("대출이 완료되었습니다. " + "남은 대출가능 횟수:" + remainBorrowCount);
 				userList[key].setBorrowedBooks(title);
 				bookList[i].setBorrowStatus(true);
@@ -147,19 +300,19 @@ public class UserInterface {
 			System.out.println("반납하실 책의 제목을 입력해주세요. 그만두기 'n'");
 			String title = scan.next();
 			for (int j = 0; j < borrowedList.length; j++) {
-				if(borrowedList[j] == null) {
+				if (borrowedList[j] == null) {
 					continue;
 				}
-					
+
 				if (borrowedList[j].equals(title)) {
 					System.out.println("반납에 성공하였습니다.");
 					borrowedList[j] = null;
 					return;
 				}
 			}
-			
+
 			System.out.println("입력하신 제목과 일치하는 책이 존재하지 않습니다.");
-			if(borrowedList[i] == null) {
+			if (borrowedList[i] == null) {
 				return;
 			}
 		}
@@ -207,5 +360,5 @@ public class UserInterface {
 	public static User[] getUserList() {
 		return userList;
 	}
-	
+
 }
