@@ -2,6 +2,8 @@ package java230407;
 
 import java.util.ArrayList;
 
+import java230411.Student;
+
 public class ArrayListTest {
 
 	public static void main(String[] args) {

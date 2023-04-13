@@ -1,5 +1,7 @@
 package java230407;
 
+import java230411.Student;
+
 public abstract class A {
 
 	int n;

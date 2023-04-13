@@ -16,7 +16,6 @@ public class fileReaderTest {
 			fr.read(buff);
 			
 			for (int i = 0; i < buff.length; i++) {
-				System.out.print(buff[i]);
 			}
 			
 		} catch (FileNotFoundException e) {

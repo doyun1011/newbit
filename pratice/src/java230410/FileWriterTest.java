@@ -8,7 +8,6 @@ public class FileWriterTest {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		String tmp;
 		String str = "";
 		FileWriter fw = null;
 		int i = 0;

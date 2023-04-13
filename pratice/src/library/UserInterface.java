@@ -36,10 +36,10 @@ public class UserInterface {
 				break;
 			case 4:
 				li.logInService();
-				li.borrowBook();
+				li.readingRoomService();
 				break;
 			case 5:
-				li.readingRoomService();
+				
 				return;
 
 			default:
@@ -92,24 +92,18 @@ public class UserInterface {
 				int startHour = scan.nextInt();
 				System.out.println("예약할 분(minute)을 입력하세요.");
 				int startMinute = scan.nextInt();
-				if (startHour <= date.getHour() && startMinute < date.getMinute()) {
-					System.out.println("현재시간 이전 시간은 선택하실 수 없습니다.");
+				if(!timeTest(startHour, startMinute)) {
 					continue;
 				}
-				if (!(hourTest(startHour) && minuteTest(startMinute))) {
-					continue;
-				}
+				
 				System.out.println("예약종료 할 시간을 입력하세요.");
 				int endHour = scan.nextInt();
 				System.out.println("예약종료 할 분(minute)을 입력하세요.");
 				int endMinute = scan.nextInt();
-				if (endHour <= startHour && endMinute < startMinute) {
-					System.out.println("시작 시간보다 이전 시간을 선택하실 수 없습니다.");
+				if(!timeTest(endHour, endMinute)) {
 					continue;
 				}
-				if (!(hourTest(endHour) && minuteTest(endMinute))) {
-					continue;
-				}
+			
 				System.out.println("예약할 좌석을 선택하세요. 0 ~ 35번");
 				printReservSeat();
 				int seatNum = scan.nextInt();
@@ -152,12 +146,13 @@ public class UserInterface {
 
 	private void printReservSeat() {
 		for (int i = 0; i < readRoomList.length; i++) {
-			String reservId = readRoomList[i].getUserId();
-			if (reservId == null) {
+			if (readRoomList[i] == null) {
 				continue;
-			} else {
-				System.out.println(readRoomList[i]);
 			}
+			String reservId = readRoomList[i].getUserId();
+			
+				System.out.println(readRoomList[i]);
+			
 		}
 		System.out.println();
 
@@ -171,11 +166,19 @@ public class UserInterface {
 		return true;
 	}
 
-	private boolean hourTest(int hour) {
-		if (hour > 22 || hour < 9) {
-			System.out.println("도서관 운영시간을 벗어났습니다.");
+	private boolean timeTest(int hour, int minute) {
+		int reservTime = hour*60 + minute;
+		int openTime = 9*60;
+		int closeTime = 22*60;
+		int currentTime = date.getHour()*60 + date.getMinute();
+		
+		if(reservTime < openTime || reservTime> closeTime ) {
+			System.out.println("도서관 운영시간이 아닙니다.");
 			return false;
+		}else if(reservTime < currentTime) {
+			System.out.println("현재시간 이후로 예약해주세요.");
 		}
+		
 		return true;
 
 	}

@@ -1,6 +1,9 @@
-package java230407;
+package java230411;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private int sno;
 	private String name;
 	public Student() {

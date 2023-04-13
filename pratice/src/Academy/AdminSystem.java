@@ -2,10 +2,8 @@ package Academy;
 
 import java.util.Scanner;
 
+//delete getName 없던 것 수정
 public class AdminSystem {
-	Student student = new Student();
-	Teacher teacher = new Teacher();
-	Employee employee = new Employee();
 	Scanner scan = new Scanner(System.in);
 	Student[] studentList = new Student[100];
 	Teacher[] teacherList = new Teacher[100];
@@ -196,12 +194,15 @@ public class AdminSystem {
 		switch (selector) {
 		case 1:
 			deleteStudent();
+			printStudentList();
 			break;
 		case 2:
 			deleteTeacher();
+			printStudentList();
 			break;
 		case 3:
 			deleteEmployee();
+			printStudentList();
 			break;
 
 		default:
@@ -215,12 +216,12 @@ public class AdminSystem {
 			for (int i = 0; i < studentList.length; i++) {
 				if(studentList[i] == null) {
 					return;
+					
 				}
-				if(studentList[i].equals(name)) {
+				if(studentList[i].getName().equals(name)) {
 					reduceStudentList(i);
 				}
 			}
-			printStudentList();
 		}
 		public void reduceStudentList(int index) {
 			Student[] tmpArray = new Student[studentList.length-1];
@@ -240,11 +241,10 @@ public class AdminSystem {
 				if(teacherList[i] == null) {
 					return;
 				}
-				if(teacherList[i].equals(name)) {
+				if(teacherList[i].getName().equals(name)) {
 					reduceTeacherList(i);
 				}
 			}
-			printTeacherList();
 		}
 		public void reduceTeacherList(int index) {
 			Teacher[] tmpArray = new Teacher[teacherList.length-1];
@@ -264,11 +264,10 @@ public class AdminSystem {
 				if(employeeList[i] == null) {
 					return;
 				}
-				if(employeeList[i].equals(name)) {
+				if(employeeList[i].getName().equals(name)) {
 					reduceEmployeeList(i);
 				}
 			}
-			printEmployeeList();
 		}
 		public void reduceEmployeeList(int index) {
 			Employee[] tmpArray = new Employee[employeeList.length-1];

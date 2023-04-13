@@ -16,6 +16,16 @@ public class AdminManagementSystem {
 	int teacherCnt;
 	int employeeCnt;
 
+	//변수는 한 클레스에 모으자
+	//다른 클래스에서 참조타입이 필요하다면 지역변수로 최대한 해결
+	//메소드에 선언과 필드에 선언의 차이
+	//넘겨준 변수의 값변화
+	//다른 클래스에서 List에 객체 저장법
+	//get, set 
+	//다른 클래스에 동일한 배열을 선언했다면
+	//main과 static 그리고 method
+	
+	
 
 		public static void main(String[] args) {
 			AdminManagementSystem admin2 = new AdminManagementSystem();
