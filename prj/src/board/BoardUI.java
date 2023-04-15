@@ -20,8 +20,8 @@ public class BoardUI {
 	public void printPage() throws Exception {
 		// 해당 페이지의 게시물 전체 출력
 		ArrayList<BoardVO> boardList = boardService.getPageBoard(pageNum);
-		for (BoardVO boar : boardList) {
-			System.out.println(boar);
+		for (BoardVO board : boardList) {
+			System.out.println(board);
 		}
 
 		// 페이지 하단에 페이지 넘버 출력
