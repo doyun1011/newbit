@@ -12,5 +12,6 @@ public class BoardProgram {
 			
 			end = boardUi.endSelect();
 		}while(end != 0);
+		System.out.println("프로그램을 종료합니다...");
 	}
 }  
