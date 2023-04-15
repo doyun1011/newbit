@@ -13,7 +13,7 @@ public class DBcon {
 		final String upw = "1234";
 		
 		Class.forName(driverName);
-		
+		 
 		Connection conn = null;
 		conn = DriverManager.getConnection(url,uid,upw);
 		
