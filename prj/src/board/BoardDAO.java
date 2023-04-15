@@ -16,7 +16,6 @@ public class BoardDAO {
 	private String nowDate = "" + now;
 
 	private int dividePageUnit = 3;
-	private int preListSize = 0;
 
 	// 게시물 등록
 	public void registPost(BoardVO board) throws Exception {
@@ -43,7 +42,7 @@ public class BoardDAO {
 		pstt.setInt(2, dividePageUnit);
 		ResultSet rs = pstt.executeQuery();
 
-		preListSize = boardList.size();
+		int preListSize = boardList.size();
 		while (rs.next()) {
 			BoardVO board = new BoardVO();
 			board.setBno(rs.getInt("bno"));
