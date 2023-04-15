@@ -32,7 +32,7 @@ public class BoardDAO {
 		int result = pstt.executeUpdate();
 	}
 
-	// 입력받은 페이지의 게시물 목록 조회
+	// 해당 페이지의 게시물 전체 조회
 	public ArrayList<BoardVO> getPageBoard(int pageNum) throws Exception {
 		Connection conn = DBcon.getConnection();
 		String query = "SELECT * FROM board LIMIT ? , ?";

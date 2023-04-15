@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class BoardService {
 
-	BoardDAO dao = new BoardDAO();
+	private BoardDAO dao = new BoardDAO();
 
 	// 게시물 등록
 	public void registPost(BoardVO board) throws Exception {

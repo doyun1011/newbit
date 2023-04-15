@@ -5,13 +5,13 @@ import java.util.Scanner;
 
 public class BoardUI {
 
-	BoardService boardService = new BoardService();
-	Scanner scan = new Scanner(System.in);
+	private BoardService boardService = new BoardService();
+	private Scanner scan = new Scanner(System.in);
 
-	String introTitle = "\t\t-------------- greenComunity --------------";
-	String menu = "1.게시글등록    2.페이지변경   3.게시물 보기    4.수정    5.삭제";
+	private String introTitle = "\t\t-------------- greenComunity --------------";
+	private String menu = "1.게시글등록    2.페이지변경   3.게시물 보기    4.수정    5.삭제";
 
-	int pageNum = 1;
+	private int pageNum = 1;
 
 	public void intro() {
 		System.out.println(introTitle);
@@ -96,7 +96,8 @@ public class BoardUI {
 			break;
 		}
 	}
-	//종료
+
+	// 종료
 	public int endSelect() {
 		System.out.println("계속하시겠습니까? 1.계속하기 0. 종료");
 		int end = scan.nextInt();
