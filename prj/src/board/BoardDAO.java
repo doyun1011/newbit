@@ -13,7 +13,7 @@ public class BoardDAO {
 	private int dividePageUnit = 3;
 	private int preListSize = 0;
 	Scanner scan = new Scanner(System.in);
- 
+  
 	// 게시글 등록
 	public void registPost(BoardVO board) throws Exception {
 		Connection conn = DBcon.getConnection();

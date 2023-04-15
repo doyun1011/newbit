@@ -11,4 +11,4 @@ public class BoardVO {
 	private String modifyDate;
 	private String writer;
 }
- 
+  

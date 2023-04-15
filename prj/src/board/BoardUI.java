@@ -10,7 +10,7 @@ public class BoardUI {
 
 	String introTitle = "-------- greenComunity --------";
 	String menu = "1.게시글등록    2.페이지변경    3.수정    4.삭제";
-
+ 
 	int pageNum = 1;
 
 	public void intro() {
