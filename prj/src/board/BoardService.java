@@ -10,7 +10,7 @@ public class BoardService {
 	public void registPost(BoardVO board) throws Exception {
 		dao.registPost(board);
 	}
-
+ 
 	// 첫 페이지 게시글 목록 조회
 	public ArrayList<BoardVO> getFirstPage() throws Exception {
 		ArrayList<BoardVO> boardList = dao.getFirstPage();

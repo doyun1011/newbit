@@ -13,4 +13,4 @@ public class BoardProgram {
 			end = boardUi.endSelect();
 		}while(end != 0);
 	}
-}
+} 

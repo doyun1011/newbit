@@ -18,7 +18,7 @@ public class DBcon {
 		conn = DriverManager.getConnection(url,uid,upw);
 		
 		return conn;
-		
+		 
 		
 		
 	}

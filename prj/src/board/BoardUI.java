@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BoardUI {
-
+ 
 	BoardService boardService = new BoardService();
 	Scanner scan = new Scanner(System.in);
 
