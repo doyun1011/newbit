@@ -11,5 +11,5 @@ public class BoardProgram {
 			ui.menuSelect();
 			end = ui.selectEnd();
 		}while (end != 0);
-	}
+	} 
 }

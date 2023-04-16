@@ -12,7 +12,7 @@ public class BoardService {
 
 	public ArrayList<BoardVO2> getPageAllBoard(int pageNum) throws Exception {
 		return dao.getPageAllBoard(pageNum);
-	}
+	} 
 
 	public board2.BoardVO2 getBoard(int bno) throws Exception {
 		return dao.getBoard(bno);

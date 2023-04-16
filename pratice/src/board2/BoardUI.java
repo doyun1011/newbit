@@ -9,7 +9,7 @@ public class BoardUI {
 	private String menu = "1.글쓰기   2.페이지 이동   3.게시물 보기   4.수정   5.삭제";
 
 	private int pageNum = 1;
-	
+	 
 	BoardService boardService = new BoardService();
 	Scanner scan = new Scanner(System.in);
 

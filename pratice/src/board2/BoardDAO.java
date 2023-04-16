@@ -55,7 +55,7 @@ public class BoardDAO {
 				boardList2.remove(0);
 		}
 		return boardList2;
-	}
+	} 
 
 	public BoardVO2 getBoard(int bno) throws Exception {
 		Connection conn = DBcon.getConnection();
