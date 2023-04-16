@@ -15,9 +15,9 @@ public class BoardVO {
 	private String modifyDate;
 	private String writer;
 	
-	BoardVO(){
+	public BoardVO(){
 		bno++;
 	}
 	
-	//Á¶È¸´Â ³»¿ë Á¦¿Ü 
+	//ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 }
