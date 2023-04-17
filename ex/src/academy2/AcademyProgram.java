@@ -20,10 +20,10 @@ public class AcademyProgram {
 				System.out.println(".....");
 			}
 			end = ui.contiue();
-		}while(end != 0);
+		}while(end != 0);  
 		
 		
-		System.out.println("프로그램을 종료합니다.");
+		System.out.println("�봽濡쒓렇�옩�쓣 醫낅즺�빀�땲�떎.");
 	}
 
 }
