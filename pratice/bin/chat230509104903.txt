@@ -1,2 +1,0 @@
-Client >> 좋아
-Server >> 가보자구

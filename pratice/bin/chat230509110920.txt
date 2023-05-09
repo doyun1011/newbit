@@ -1,4 +1,0 @@
-Client >> 연결 확인!
-Server >> Ok
-Client >> 굿
-Server >> 종료합시다.

@@ -6,7 +6,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import board.DBcon;
+import java0503.DBcon;
+
 
 public class BoardDAO {
 

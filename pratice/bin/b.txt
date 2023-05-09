@@ -1,7 +1,0 @@
-hello
-hi
-안녕hello
-hi
-안녕hello
-hi
-안녕
